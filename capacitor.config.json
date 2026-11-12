@@ -1,0 +1,6 @@
+{
+  "appId": "com.rodizio.app",
+  "appName": "Rodízio",
+  "webDir": "dist",
+  "server": { "androidScheme": "https" }
+}

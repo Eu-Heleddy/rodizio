@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="420" viewBox="0 0 420 420">
+<defs>
+<g id="slice"><path d="M-18 -22 L18 -22 L0 26Z"/><path d="M-21 -27 Q0 -36 21 -27"/><circle cx="-5" cy="-9" r="4"/><circle cx="6" cy="2" r="3"/></g>
+<g id="whole"><circle r="26"/><circle r="20"/><path d="M0 -26V26M-26 0H26M-18 -18L18 18M18 -18L-18 18"/><circle cx="-9" cy="-9" r="4"/><circle cx="10" cy="6" r="4"/><circle cx="-6" cy="12" r="3"/></g>
+<g id="cutter"><circle r="14"/><circle r="3"/><path d="M14 0H44M44 -6V6"/></g>
+<g id="box"><path d="M-26 -10H26V18H-26Z"/><path d="M-26 -10L-20 -22H20L26 -10"/><circle cy="4" r="7"/></g>
+<g id="chef"><path d="M-16 10V22H16V10"/><path d="M-16 10Q-26 -4 -12 -10Q-8 -24 0 -16Q8 -24 12 -10Q26 -4 16 10Z"/></g>
+<g id="tomato"><circle r="16"/><path d="M-8 -14L0 -8L8 -14M0 -8V-20"/></g>
+<g id="leaf"><path d="M-16 8Q-10 -18 18 -14Q16 14 -16 8Z"/><path d="M-16 8L10 -6"/></g>
+<g id="pep"><circle r="14"/><circle cx="-4" cy="-4" r="2"/><circle cx="5" cy="3" r="2"/><circle cx="-2" cy="7" r="1.5"/></g>
+<g id="mush"><path d="M-18 2Q-18 -18 0 -18Q18 -18 18 2Z"/><path d="M-6 2V16H6V2"/></g>
+<g id="cheese"><path d="M-22 10H22V-4L-22 -16Z"/><circle cx="-8" cy="2" r="3"/><circle cx="8" cy="0" r="2.5"/></g>
+</defs>
+<g fill="none" stroke="#b8a48c" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" opacity=".5">
+<use href="#slice" transform="translate(50 50) rotate(-20)"/>
+<use href="#whole" transform="translate(180 40)"/>
+<use href="#cutter" transform="translate(290 60) rotate(25)"/>
+<use href="#chef" transform="translate(375 50) rotate(10)"/>
+<use href="#pep" transform="translate(40 160)"/>
+<use href="#box" transform="translate(130 150) rotate(-8)"/>
+<use href="#tomato" transform="translate(240 160)"/>
+<use href="#slice" transform="translate(330 170) rotate(30)"/>
+<use href="#leaf" transform="translate(50 270) rotate(-30)"/>
+<use href="#mush" transform="translate(140 275)"/>
+<use href="#whole" transform="translate(245 280) rotate(15)"/>
+<use href="#cheese" transform="translate(350 285) rotate(-10)"/>
+<use href="#chef" transform="translate(60 385) rotate(-12)"/>
+<use href="#slice" transform="translate(170 385) rotate(160)"/>
+<use href="#pep" transform="translate(270 385)"/>
+<use href="#cutter" transform="translate(350 380) rotate(-35)"/>
+</g></svg>
