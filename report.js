@@ -32,11 +32,12 @@ function pizzaPattern(c, w, h, alpha) {
   for (let y = 70; y < h; y += 190) for (let x = (n % 2 ? 130 : 40); x < w + 60; x += 260) { c.save(); c.translate(x, y); c.rotate(((n * 37) % 50 - 25) * Math.PI / 180); c.fillText(em[n % em.length], 0, 0); c.restore(); n++; }
   c.restore();
 }
-async function drawAvatar(c, a, x, y, s) {
-  const img = await svgImg(avatarSVG(a, 256, '#ffe3b3'));
+const urlImg = u => new Promise(res => { const i = new Image(); i.onload = () => res(i); i.onerror = () => res(null); i.src = u; });
+async function drawAvatar(c, p, x, y, s) {
+  const img = p.photo ? await urlImg(p.photo) : await svgImg(avatarSVG(p.avatar || {}, 256, '#ffe3b3'));
   c.save(); c.shadowColor = 'rgba(0,0,0,.35)'; c.shadowBlur = 18; c.shadowOffsetY = 6;
   c.beginPath(); c.arc(x + s / 2, y + s / 2, s / 2, 0, 7); c.fillStyle = '#ffe3b3'; c.fill(); c.restore();
-  if (img) c.drawImage(img, x, y, s, s);
+  if (img) { c.save(); c.beginPath(); c.arc(x + s / 2, y + s / 2, s / 2, 0, 7); c.clip(); c.drawImage(img, x, y, s, s); c.restore(); }
   c.lineWidth = 6; c.strokeStyle = '#fff'; c.beginPath(); c.arc(x + s / 2, y + s / 2, s / 2, 0, 7); c.stroke();
 }
 const mk = (w, h) => { const cv = document.createElement('canvas'); cv.width = w; cv.height = h; return [cv, cv.getContext('2d')]; };
@@ -61,7 +62,7 @@ export async function makeStory({ code, date, total, ranking }) {
     c.font = '900 120px system-ui, sans-serif'; c.fillText(String(i + 1), m.x, top + 130);
     c.font = '800 54px system-ui, sans-serif'; c.fillText(`${p.total} 🍕`, m.x, top + (i === 0 ? 220 : 175));
     c.fillStyle = '#fff'; c.font = '800 52px system-ui, sans-serif'; c.fillText(fit(c, p.name, 300), m.x, top - 24);
-    await drawAvatar(c, p.avatar, m.x - m.s / 2, top - 24 - 60 - m.s + 10, m.s);
+    await drawAvatar(c, p, m.x - m.s / 2, top - 24 - 60 - m.s + 10, m.s);
     if (i === 0) { c.font = '110px sans-serif'; c.fillText('👑', m.x, top - 24 - 60 - m.s + 20); }
   }
   c.fillStyle = 'rgba(0,0,0,.25)'; c.fillRect(60, base, 960, 8);
@@ -71,7 +72,7 @@ export async function makeStory({ code, date, total, ranking }) {
     const p = rest[i], y = 1185 + i * 100;
     c.fillStyle = 'rgba(255,255,255,.16)'; rr(c, 80, y, 920, 88, 44); c.fill();
     c.fillStyle = '#fff'; c.textAlign = 'left'; c.font = '800 44px system-ui, sans-serif'; c.fillText(`${i + 4}º`, 120, y + 60);
-    await drawAvatar(c, p.avatar, 215, y + 6, 76);
+    await drawAvatar(c, p, 215, y + 6, 76);
     c.font = '700 44px system-ui, sans-serif'; c.fillText(fit(c, p.name, 480), 315, y + 60);
     c.textAlign = 'right'; c.fillText(`${p.total} 🍕`, 965, y + 60);
   }
@@ -96,7 +97,7 @@ export async function makeReport({ code, date, total, ranking }) {
     const p = ranking[i], y = 290 + i * rowH;
     c.save(); c.shadowColor = 'rgba(0,0,0,.18)'; c.shadowBlur = 14; c.shadowOffsetY = 4; c.fillStyle = '#fff'; rr(c, 50, y, 980, rowH - 22, 30); c.fill(); c.restore();
     c.textAlign = 'center'; c.fillStyle = i < 3 ? ['#e0a800', '#8d98a0', '#b9773a'][i] : '#999'; c.font = '900 56px system-ui, sans-serif'; c.fillText(`${i + 1}º`, 125, y + 92);
-    await drawAvatar(c, p.avatar, 195, y + 14, 120);
+    await drawAvatar(c, p, 195, y + 14, 120);
     c.textAlign = 'left'; c.fillStyle = '#222'; c.font = '800 46px system-ui, sans-serif'; c.fillText(fit(c, p.name, 430), 340, y + 62);
     c.fillStyle = '#6b5d50'; c.font = '500 33px system-ui, sans-serif'; c.fillText(`⏱ pace médio: ${p.total ? fmt(p.pace) : '—'}`, 340, y + 112);
     c.textAlign = 'right'; c.fillStyle = '#c62828'; c.font = '900 72px system-ui, sans-serif'; c.fillText(String(p.total), 960, y + 90);

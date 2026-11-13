@@ -66,3 +66,7 @@ button{font:inherit;border:0;cursor:pointer;touch-action:manipulation}
 .ev{display:flex;justify-content:space-between;gap:10px;background:#fff;border-radius:12px;padding:11px 14px;margin-bottom:8px;font-weight:700;box-shadow:0 1px 4px #0002}.ev b{color:var(--red);text-align:right}
 .big{font-size:22px;text-align:center;margin:8px 0;font-weight:900}.center{text-align:center}
 .setup{background:#fff;border-radius:18px;padding:18px;margin:20px 14px;font-weight:600;line-height:1.5}
+.ph{border-radius:50%;object-fit:cover;display:block;border:2px solid #ffe3b3;background:#ffe3b3}
+.btnrow{display:flex;gap:10px;margin:10px 0}.btnrow button{flex:1}
+.danger{color:#b71c1c!important;border:2px solid #b71c1c!important}
+.pv .ph{border-width:4px}
